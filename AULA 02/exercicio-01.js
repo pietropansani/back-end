@@ -4,5 +4,8 @@
 
 let anoAtual = 2026;
 let anoNascimento = 2009;
+console.log(anoAtual); // Saída: 2026
+console.log(anoNascimento); // Saída: 2009
+
 let idade = anoAtual - anoNascimento;
 console.log(idade); // Saída: 17
