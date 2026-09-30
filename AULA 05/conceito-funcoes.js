@@ -73,3 +73,27 @@ let novoSalario = aumentoSalarial2(1692, 0.25);
 // Exibindo no console com a formatação .toFixed(2)
 console.log("O valor da sua promoção de acordo com seu salário é: " + valorPromocao.toFixed(2) + ".");
 console.log("O valor que você ira receber a partir de agora é de: " + novoSalario.toFixed(2) + ".");
+
+// -------------------------------------
+// Verificar se é par ou impar
+// -------------------------------------
+
+function verificarParOuImpar(numero){
+    if (numero % 2 === 0) {
+        return "O número é PAR.";
+    } else {
+        return "O número é IMPAR.";
+    }
+}
+
+console.log(verificarParOuImpar(8));  
+console.log(verificarParOuImpar(15)); 
+
+// Outro Jeito de Fazer
+
+function parOuimpar(numero){
+    return numero % 2 === 0 ?"PAR!" :"IMPAR!";
+    // Se o resto for 0 --> retorna "par"
+    // Caso contrário ---> retorna "impar"
+}
+console.log(parOuimpar(7))
