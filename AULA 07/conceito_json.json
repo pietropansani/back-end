@@ -1,0 +1,15 @@
+{
+    "cachorro":{
+        "nome": "Thor",
+        "idade": 3,
+        "raca": "Vira Lata",
+        "vacinado": true,
+        "peso": 25.5,
+        "brinquedos": ["bola", "osso", "frisbee"],
+        "dono": {
+            "nome": "Pietro",
+            "telefone": "11913450677"
+
+        }
+    }
+}
