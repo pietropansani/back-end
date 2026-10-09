@@ -61,3 +61,58 @@ function sortear(array) {
     // Retorna o item sorteado
 }
 
+// ================================
+// ROTAS DA API
+// ================================
+
+// ROTA 1 - Cachorro Aleatório
+app.get("/api/cachorros/aleatorio", (req, res) => {
+    // req - request(requisição) = é o pedido que chega ao servidor, por exemplo,o navegador pede uma foto de cachorro.
+    // res - response(resposta) = é o que o servidor envia de volta, por exemplo, o endereço da foto do cachorro.
+
+    // pegar todas as fotos de raças
+    // object.values pega os valores do objeto
+    // flat transforma tudo em um único array
+    const todasAsFotos = Object.values(cachorros).flat();
+})
+
+// sorteia uma foto aleatória
+const item = sortear(todasAsFotos)
+
+// responder para o cliente em formato JSON
+res.json({
+    // status da resposta
+    status: "ok",
+    foto: item,
+    // URL da foto, que é a URL do servidor + o caminho da foto
+    url: `https://localhost:${PORT}/fotos/${item}`
+});
+
+// ROTA 2 - Cachorro por Raça
+// Exemoplo de URL: https://localhost:3000/api/cachorros/raça/husky
+
+app.get("/api/cachorros/raça/:raca", (req, res) => {
+    // req - request(requisição) = é o pedido que chega ao servidor
+    // res - response(resposta) = é o que o servidor envia de volta
+
+    // pegar a raça da URL
+    const raca = req.params.raca.toLocaleLowerCase();
+
+    // verificar se a raça existe
+    if (!cachorros[raca]) {
+        return res.status(404).json({
+            status: "error",
+            message: "Raça não encontrada"
+        });
+    }
+
+    // sortear uma foto aleatória da raça
+    const item = sortear(cachorros[raca]);
+
+    // responder para o cliente em formato JSON
+    res.json({
+        status: "ok",
+        foto: item,
+        url: `https://localhost:${PORT}/fotos/${item}`
+    });
+});
